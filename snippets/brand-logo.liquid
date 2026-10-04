@@ -1,0 +1,14 @@
+{%- comment -%}
+  Uploaded logo image if one is set (Theme settings > Brand), otherwise the vector WDH logo.
+  Pass `width` (px) and optional `class`.
+{%- endcomment -%}
+{%- if settings.logo != blank -%}
+  {%- assign logo_style = 'width: ' | append: width | append: 'px' -%}
+  {{
+    settings.logo
+    | image_url: width: 900
+    | image_tag: widths: '200, 400, 600, 900', sizes: '(min-width: 750px) 50vw, 90vw', style: logo_style, class: class, alt: shop.name
+  }}
+{%- else -%}
+  <span class="brand-logo-wrap" style="width: {{ width }}px">{% render 'wdh-logo', class: class %}</span>
+{%- endif -%}

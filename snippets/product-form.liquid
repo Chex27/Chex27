@@ -1,0 +1,54 @@
+{%- comment -%}
+  Product form: option pills, quantity, add to cart. Pass `product`, `current_variant`,
+  `section` and `show_dynamic_checkout`. Needs a parent with [data-product-section].
+{%- endcomment -%}
+{%- assign form_id = 'product-form-' | append: section.id -%}
+{%- form 'product', product, id: form_id, class: 'product-form', data-product-form: '' -%}
+  <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id>
+
+  {%- unless product.has_only_default_variant -%}
+    {%- for option in product.options_with_values -%}
+      {%- assign option_index = forloop.index -%}
+      <fieldset class="option">
+        <legend>{{ option.name }}: <span data-option-label="{{ option.position }}">{{ option.selected_value }}</span></legend>
+        <div class="option__values">
+          {%- for value in option.values -%}
+            <input
+              type="radio"
+              class="visually-hidden"
+              id="option-{{ section.id }}-{{ option_index }}-{{ forloop.index }}"
+              name="option{{ option.position }}"
+              value="{{ value | escape }}"
+              data-option="{{ option.position }}"
+              {% if option.selected_value == value %}
+                checked
+              {% endif %}
+            >
+            <label class="pill" for="option-{{ section.id }}-{{ option_index }}-{{ forloop.index }}">{{ value }}</label>
+          {%- endfor -%}
+        </div>
+      </fieldset>
+    {%- endfor -%}
+  {%- endunless -%}
+
+  <div class="product-form__qty">
+    <label for="quantity-{{ section.id }}">Quantity</label>
+    <input id="quantity-{{ section.id }}" type="number" name="quantity" value="1" min="1">
+  </div>
+
+  <button
+    type="submit"
+    name="add"
+    class="btn btn--accent btn--full btn--lg"
+    data-add-button
+    {% unless current_variant.available %}
+      disabled
+    {% endunless %}
+  >
+    {%- if current_variant.available -%}Add to cart{%- else -%}Sold out{%- endif -%}
+  </button>
+  {%- if show_dynamic_checkout -%}
+    {{ form | payment_button }}
+  {%- endif -%}
+  <p class="form-message" data-form-message role="status" hidden></p>
+{%- endform -%}

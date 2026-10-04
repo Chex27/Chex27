@@ -3,7 +3,8 @@
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
-  background: var(--color-bg);
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   color: var(--color-text);
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   font-size: 16px;
@@ -13,10 +14,10 @@ body {
 img, svg, video { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
 h1, h2, h3, .wordmark, .btn, .eyebrow, .pill, .announcement {
-  font-family: 'Archivo Black', Impact, 'Arial Black', sans-serif;
+  font-family: 'Luckiest Guy', 'Arial Black', sans-serif;
   font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: .01em;
+  letter-spacing: .02em;
 }
 h1, h2, h3 { line-height: 1.05; margin: 0 0 .5em; }
 p { margin: 0 0 1em; }
@@ -42,16 +43,17 @@ p { margin: 0 0 1em; }
   padding: 14px 26px; border: 2px solid transparent; border-radius: var(--radius);
   font-size: .95rem; text-decoration: none; cursor: pointer; transition: transform .15s, background .15s, color .15s;
 }
-.btn:hover { transform: translateY(-2px); }
+.btn:hover { transform: translateY(-2px) rotate(-1deg); }
+.btn--accent:hover { background: var(--color-logo-3); color: #fff; }
 .btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
-.btn--accent { background: var(--color-accent); color: var(--color-accent-text); }
+.btn--accent { background: var(--color-accent); color: var(--color-accent-text); box-shadow: 0 4px 0 rgba(0,0,0,.35); }
 .btn--outline { background: transparent; color: var(--color-text); border-color: var(--color-text); }
 .btn--outline:hover { background: var(--color-text); color: var(--color-bg); }
 .btn--lg { padding: 18px 34px; font-size: 1.05rem; }
 .btn--full { width: 100%; }
 .link-arrow { text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: .85rem; letter-spacing: .06em; }
 .link-arrow::after { content: ' →'; }
-.eyebrow { color: var(--color-accent); font-size: .85rem; letter-spacing: .14em; margin-bottom: .75em; }
+.eyebrow { color: var(--color-accent); font-size: 1rem; font-size: .85rem; letter-spacing: .14em; margin-bottom: .75em; }
 
 /* Forms */
 input[type=text], input[type=email], input[type=password], input[type=number], input[type=search], input[type=tel], select, textarea {
@@ -118,13 +120,13 @@ label { display: block; font-size: .85rem; margin: 14px 0 6px; color: var(--colo
 /* Countdown */
 .countdown { display: flex; justify-content: center; gap: 12px; margin: 0 auto 32px; }
 .countdown__unit { min-width: 76px; padding: 14px 8px; border: 1px solid var(--color-border); background: color-mix(in srgb, var(--color-surface) 80%, transparent); border-radius: var(--radius); }
-.countdown__unit span { display: block; font-family: 'Archivo Black', Impact, sans-serif; font-size: clamp(1.6rem, 6vw, 2.6rem); line-height: 1; font-variant-numeric: tabular-nums; }
+.countdown__unit span { display: block; font-family: 'Luckiest Guy', 'Arial Black', sans-serif; font-size: clamp(1.6rem, 6vw, 2.6rem); line-height: 1; font-variant-numeric: tabular-nums; }
 .countdown__unit small { display: block; margin-top: 6px; color: var(--color-muted); text-transform: uppercase; letter-spacing: .14em; font-size: .7rem; }
-.countdown--done { font-family: 'Archivo Black', Impact, sans-serif; font-size: 1.6rem; color: var(--color-accent); }
+.countdown--done { font-family: 'Luckiest Guy', 'Arial Black', sans-serif; font-size: 1.6rem; color: var(--color-accent); }
 
 /* Marquee */
 .marquee { overflow: hidden; border-block: 1px solid var(--color-border); padding: 14px 0; }
-.marquee__track { display: flex; width: max-content; gap: 28px; animation: marquee 30s linear infinite; font-family: 'Archivo Black', Impact, sans-serif; font-size: 1.6rem; text-transform: uppercase; }
+.marquee__track { display: flex; width: max-content; gap: 28px; animation: marquee 30s linear infinite; font-family: 'Luckiest Guy', 'Arial Black', sans-serif; font-size: 1.6rem; text-transform: uppercase; }
 .marquee__dot { color: var(--color-accent); font-size: .8rem; align-self: center; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; } }
@@ -252,3 +254,119 @@ input:focus-visible + .pill { outline: 2px solid var(--color-accent); outline-of
 .table { width: 100%; border-collapse: collapse; margin-bottom: 32px; }
 .table th, .table td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--color-border); }
 .gift-code { font-size: 1.5rem; letter-spacing: .1em; }
+
+/* ---------- WDH drip / brand layer ---------- */
+.brand-logo-wrap { display: inline-block; max-width: 100%; line-height: 0; }
+.wdh-logo { width: 100%; height: auto; overflow: visible; }
+.wdh-logo text { font-family: 'Luckiest Guy', 'Arial Black', sans-serif; }
+.header { background: color-mix(in srgb, var(--color-bg) 92%, transparent); }
+.header__inner { min-height: 76px; }
+.header__logo { display: flex; padding: 6px 0; }
+
+.announcement { font-family: 'Luckiest Guy', 'Arial Black', sans-serif; font-size: .95rem; letter-spacing: .08em; padding: 10px 16px 4px; }
+.drip {
+  height: 26px; margin-top: -1px; background: var(--color-accent);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='26'%3E%3Cpath d='M0 0h240v8h-26v8a6 6 0 0 1-12 0V8h-62v12a6 6 0 0 1-12 0V8H90v5a5 5 0 0 1-10 0V8H30v14a7 7 0 0 1-14 0V8H0z'/%3E%3C/svg%3E") repeat-x top left / 240px 26px;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='26'%3E%3Cpath d='M0 0h240v8h-26v8a6 6 0 0 1-12 0V8h-62v12a6 6 0 0 1-12 0V8H90v5a5 5 0 0 1-10 0V8H30v14a7 7 0 0 1-14 0V8H0z'/%3E%3C/svg%3E") repeat-x top left / 240px 26px;
+  position: relative; z-index: 51;
+}
+.section-announcement { position: relative; z-index: 51; }
+.drip--up { transform: scaleY(-1); margin-top: 40px; margin-bottom: -1px; }
+.footer { margin-top: 0; background: var(--color-accent); color: var(--color-accent-text); border-top: 0; }
+.footer .muted, .footer__nav a, .footer__bottom { color: color-mix(in srgb, var(--color-accent-text) 75%, transparent); }
+.footer__nav a:hover { color: var(--color-accent-text); }
+.footer .social a { color: var(--color-accent-text); }
+.footer .social a:hover { color: var(--color-logo-3); }
+.footer .brand-logo-wrap { filter: drop-shadow(0 3px 0 rgba(0,0,0,.25)); }
+.footer .wdh-logo path { fill: #fff; }
+
+/* Hero (split) */
+.hero { min-height: 0; display: block; overflow: visible; }
+.hero__inner { display: grid; gap: 32px; align-items: center; padding-top: 40px; padding-bottom: 56px; }
+@media (min-width: 990px) { .hero__inner { grid-template-columns: 1.05fr .95fr; gap: 56px; padding-top: 56px; padding-bottom: 80px; } }
+.hero__content { position: static; padding: 0; text-align: center; }
+@media (min-width: 990px) { .hero__content { text-align: left; } }
+.hero__logo { margin: 0 0 18px; line-height: 0; }
+.hero__logo .brand-logo-wrap, .hero__logo img { width: min(520px, 100%) !important; animation: wobble 6s ease-in-out infinite; transform-origin: 50% 60%; }
+@keyframes wobble { 0%,100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg) translateY(-4px); } }
+.hero__heading { font-size: clamp(4rem, 16vw, 10rem); color: var(--color-accent); }
+.hero__text { margin: 0 0 26px; max-width: 480px; color: var(--color-text); font-size: 1.2rem; }
+@media (max-width: 989px) { .hero__text { margin-inline: auto; } }
+.hero .countdown { justify-content: center; margin: 0 0 28px; }
+@media (min-width: 990px) { .hero .countdown { justify-content: flex-start; } }
+.hero__media { position: relative; inset: auto; border-radius: 28px; overflow: visible; }
+.hero__media img { width: 100%; height: auto; border-radius: 28px; box-shadow: 0 24px 60px rgba(0,0,0,.35); }
+.hero__sticker {
+  position: absolute; z-index: 2; top: -18px; right: -10px; width: 96px; height: 96px; display: grid; place-items: center;
+  border-radius: 50%; background: var(--color-logo-3); color: #fff; transform: rotate(12deg);
+  font-family: 'Luckiest Guy', 'Arial Black', sans-serif; font-size: 1.9rem; box-shadow: 0 6px 0 rgba(0,0,0,.3);
+}
+.hero__sticker:empty { display: none; }
+@media (prefers-reduced-motion: reduce) { .hero__logo .brand-logo-wrap, .hero__logo img { animation: none; } }
+
+/* Countdown colors */
+.countdown__unit { border: 0; background: var(--color-surface); border-radius: 18px; box-shadow: 0 4px 0 rgba(0,0,0,.25); }
+.countdown__unit:nth-child(1) span { color: var(--color-logo-1); }
+.countdown__unit:nth-child(2) span { color: var(--color-logo-2); }
+.countdown__unit:nth-child(3) span { color: var(--color-logo-3); }
+.countdown__unit:nth-child(4) span { color: var(--color-accent); }
+
+/* Marquee */
+.marquee { background: var(--color-text); color: var(--color-bg); border: 0; transform: rotate(-1.5deg); margin: 10px -10px; }
+.marquee__track { font-size: 1.8rem; }
+.marquee__track span:nth-child(4n+1) { color: var(--color-bg); }
+.marquee__dot { color: var(--color-logo-3); }
+
+/* Spotlight (001) */
+.spotlight { display: grid; gap: 32px; align-items: start; }
+@media (min-width: 990px) { .spotlight { grid-template-columns: 1.2fr 1fr; gap: 56px; } }
+.spotlight__media { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.spotlight__img { border-radius: 22px; overflow: hidden; background: var(--color-surface); }
+.spotlight__img img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 749px) {
+  .spotlight__media { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 82%; overflow-x: auto; scroll-snap-type: x mandatory; }
+  .spotlight__img { scroll-snap-align: start; }
+}
+.spotlight__info { position: sticky; top: 110px; }
+.spotlight__number {
+  font-family: 'Luckiest Guy', 'Arial Black', sans-serif; font-size: clamp(5rem, 14vw, 9rem); line-height: .8; margin: 0 0 8px;
+  color: var(--color-accent); -webkit-text-stroke: 0; text-shadow: 5px 5px 0 var(--color-logo-3);
+}
+.spotlight__title { font-size: clamp(2rem, 5vw, 3rem); }
+.spotlight__details ul { padding-left: 1.1em; margin: 0 0 24px; }
+.spotlight__details li { margin-bottom: 6px; }
+.spotlight__details li::marker { color: var(--color-accent); }
+.spotlight .link-arrow { display: inline-block; margin-top: 18px; }
+
+/* Cards: colored pop on hover */
+.card__media { border-radius: 20px; }
+.card { transition: transform .2s; }
+.card:hover { transform: translateY(-4px) rotate(-.5deg); }
+.grid > .card:nth-child(3n+1):hover .card__media { box-shadow: 0 0 0 4px var(--color-logo-1); }
+.grid > .card:nth-child(3n+2):hover .card__media { box-shadow: 0 0 0 4px var(--color-logo-2); }
+.grid > .card:nth-child(3n+3):hover .card__media { box-shadow: 0 0 0 4px var(--color-logo-3); }
+.card__title { font-family: 'Luckiest Guy', 'Arial Black', sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: .03em; font-size: 1.15rem; }
+.badge { border-radius: 999px; background: var(--color-logo-3); color: #fff; }
+
+/* Image with text */
+.split__media { aspect-ratio: 16 / 10; border-radius: 26px; }
+.split__media img { object-position: center; }
+
+/* Pills, product page */
+.pill { border-radius: 999px; border-width: 2px; font-weight: 800; }
+input:checked + .pill { background: var(--color-accent); color: var(--color-accent-text); border-color: var(--color-accent); }
+.product__media-item { border-radius: 22px; }
+.price__current { font-weight: 800; }
+
+/* Signup */
+.signup { background: var(--color-surface); border-radius: 28px; padding: 48px 24px; margin-top: 40px; margin-bottom: 40px; }
+.signup .section__title { color: var(--color-accent); }
+input[type=text], input[type=email], input[type=password], input[type=number], input[type=search], input[type=tel], select, textarea { border-radius: 14px; }
+.newsletter__row input { border-radius: 999px; padding-left: 20px; }
+
+/* Password page */
+.password__logo, .password .brand-logo-wrap { margin: 0 auto 10px; }
+.password .brand-logo-wrap { animation: wobble 6s ease-in-out infinite; }
+.password__heading { color: var(--color-accent); }
+html, body { overflow-x: clip; }
+@media (max-width: 749px) { .hero__sticker { right: 8px; top: -14px; width: 76px; height: 76px; font-size: 1.5rem; } }

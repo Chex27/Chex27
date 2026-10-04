@@ -2,7 +2,7 @@
   {
     "name": "theme_info",
     "theme_name": "WDH",
-    "theme_version": "1.0.0",
+    "theme_version": "2.0.0",
     "theme_author": "WDH",
     "theme_documentation_url": "https://github.com/Chex27/Chex27",
     "theme_support_url": "https://github.com/Chex27/Chex27"
@@ -10,25 +10,31 @@
   {
     "name": "Colors",
     "settings": [
-      { "type": "color", "id": "color_background", "label": "Background", "default": "#0b0b0b" },
-      { "type": "color", "id": "color_surface", "label": "Cards and panels", "default": "#161616" },
-      { "type": "color", "id": "color_text", "label": "Text", "default": "#f4f1ea" },
-      { "type": "color", "id": "color_muted", "label": "Secondary text", "default": "#9b978e" },
-      { "type": "color", "id": "color_accent", "label": "Accent (buttons, highlights)", "default": "#d7ff3a" },
-      { "type": "color", "id": "color_accent_text", "label": "Text on accent", "default": "#0b0b0b" }
-    ]
-  },
-  {
-    "name": "Layout",
-    "settings": [
-      { "type": "range", "id": "page_width", "label": "Page width", "min": 1000, "max": 1600, "step": 50, "unit": "px", "default": 1400 },
-      { "type": "range", "id": "button_radius", "label": "Button corner radius", "min": 0, "max": 30, "step": 2, "unit": "px", "default": 0 }
+      { "type": "color", "id": "color_background", "label": "Background", "default": "#3d3d3d" },
+      { "type": "color", "id": "color_surface", "label": "Cards and panels", "default": "#4a4a4a" },
+      { "type": "color", "id": "color_text", "label": "Text", "default": "#f6f3ec" },
+      { "type": "color", "id": "color_muted", "label": "Secondary text", "default": "#c2beb5" },
+      { "type": "color", "id": "color_accent", "label": "Accent (buttons, drips)", "default": "#f3ce10" },
+      { "type": "color", "id": "color_accent_text", "label": "Text on accent", "default": "#1c1c1c" }
     ]
   },
   {
     "name": "Brand",
     "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Logo image (optional)", "info": "Leave empty to use the built-in WDH drip logo. Upload a transparent PNG to use your exact artwork everywhere instead." },
+      { "type": "header", "content": "Built-in logo colors" },
+      { "type": "color", "id": "color_logo_bg", "label": "Drip background", "default": "#f3ce10" },
+      { "type": "color", "id": "color_logo_1", "label": "W", "default": "#14a03a" },
+      { "type": "color", "id": "color_logo_2", "label": "D", "default": "#1a9be0" },
+      { "type": "color", "id": "color_logo_3", "label": "H", "default": "#ec1f84" },
       { "type": "image_picker", "id": "favicon", "label": "Favicon", "info": "Square image, at least 64 x 64px" }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      { "type": "range", "id": "page_width", "label": "Page width", "min": 1000, "max": 1600, "step": 50, "unit": "px", "default": 1300 },
+      { "type": "range", "id": "button_radius", "label": "Button corner radius", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 40 }
     ]
   },
   {

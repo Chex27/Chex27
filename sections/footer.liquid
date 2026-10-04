@@ -1,7 +1,8 @@
+{% render 'drip', flip: true %}
 <footer class="footer">
   <div class="footer__inner page-width">
     <div class="footer__brand">
-      <span class="wordmark wordmark--lg">{{ section.settings.wordmark | default: shop.name }}</span>
+      {% render 'brand-logo', width: 160 %}
       {%- if section.settings.tagline != blank -%}
         <p class="muted">{{ section.settings.tagline | escape }}</p>
       {%- endif -%}
@@ -36,8 +37,7 @@
   "class": "section-footer",
   "enabled_on": { "groups": ["footer"] },
   "settings": [
-    { "type": "text", "id": "wordmark", "label": "Brand name", "default": "WDH" },
-    { "type": "text", "id": "tagline", "label": "Tagline", "default": "What'd Heck." },
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "Drop 001." },
     { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" },
     { "type": "paragraph", "content": "Social links are set in Theme settings > Social media." }
   ]

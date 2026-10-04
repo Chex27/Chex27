@@ -7,7 +7,7 @@
         | image_tag: widths: '500, 800, 1100, 1400', sizes: '(min-width: 990px) 50vw, 100vw', loading: 'lazy', alt: section.settings.image.alt
       }}
     {%- else -%}
-      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder' }}
+      <img src="{{ 'wdh-embroidery.jpg' | asset_url }}" alt="Close-up of the embroidered WDH drip patch" width="655" height="373" loading="lazy">
     {%- endif -%}
   </div>
   <div class="split__content">
@@ -26,9 +26,9 @@
   "settings": [
     { "type": "image_picker", "id": "image", "label": "Image" },
     { "type": "checkbox", "id": "image_right", "label": "Put image on the right", "default": false },
-    { "type": "text", "id": "eyebrow", "label": "Small text above heading", "default": "About" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "What is WDH?" },
-    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>WDH is short for What'd Heck. Tell your story here: why you started it and what it's about.</p>" },
+    { "type": "text", "id": "eyebrow", "label": "Small text above heading", "default": "The details" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Embroidered. Not printed." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>The 001 hoodie's logo is a stitched patch, not a print. 15oz heavyweight cotton with a washed gray finish.</p>" },
     { "type": "text", "id": "button_label", "label": "Button label" },
     { "type": "url", "id": "button_link", "label": "Button link" }
   ],

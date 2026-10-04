@@ -5,20 +5,7 @@
     </button>
 
     <a class="header__logo" href="{{ routes.root_url }}">
-      {%- if section.settings.logo != blank -%}
-        {%- assign logo_style = 'max-width: ' | append: section.settings.logo_width | append: 'px' -%}
-        {{
-          section.settings.logo
-          | image_url: width: 400
-          | image_tag:
-            widths: '200, 400',
-            sizes: '200px',
-            style: logo_style,
-            alt: shop.name
-        }}
-      {%- else -%}
-        <span class="wordmark">{{ section.settings.wordmark | default: shop.name }}</span>
-      {%- endif -%}
+      {% render 'brand-logo', width: section.settings.logo_width %}
     </a>
 
     <nav class="header__nav" data-menu>
@@ -54,10 +41,9 @@
   "class": "section-header",
   "enabled_on": { "groups": ["header"] },
   "settings": [
-    { "type": "image_picker", "id": "logo", "label": "Logo" },
-    { "type": "range", "id": "logo_width", "label": "Logo width", "min": 50, "max": 300, "step": 10, "unit": "px", "default": 120 },
-    { "type": "text", "id": "wordmark", "label": "Text logo (used when no logo image)", "default": "WDH" },
-    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" }
+    { "type": "range", "id": "logo_width", "label": "Logo width", "min": 60, "max": 220, "step": 5, "unit": "px", "default": 110 },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+    { "type": "paragraph", "content": "Change the logo in Theme settings > Brand." }
   ]
 }
 {% endschema %}

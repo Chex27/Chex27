@@ -3,28 +3,37 @@
     "hero": {
       "type": "hero",
       "settings": {
+        "sticker": "001",
         "eyebrow": "Drop 001",
-        "heading": "WHAT'D HECK",
-        "text": "<p>The first WDH drop is almost here.</p>",
+        "show_logo": true,
+        "heading": "WDH",
+        "text": "<p>The first WDH drop. One heavy hoodie, a few tees.</p>",
         "button_label": "Shop the drop",
-        "height": "full",
-        "overlay": 45
+        "drop_live_text": "DROP 001 IS LIVE"
       }
     },
     "marquee": {
       "type": "marquee",
-      "settings": { "text": "WHAT'D HECK" }
+      "settings": { "text": "WDH DROP 001" }
     },
-    "featured": {
+    "spotlight": {
+      "type": "featured-product",
+      "settings": {
+        "number": "001",
+        "fallback_title": "Heavy Hoodie",
+        "details": "<ul><li>15oz heavyweight cotton</li><li>Washed \"Ultimate Gray\"</li><li>Embroidered WDH drip patch, 4.75\" x 2.75\"</li></ul>"
+      }
+    },
+    "tees": {
       "type": "featured-collection",
-      "settings": { "heading": "The drop", "limit": 8, "columns": 4 }
+      "settings": { "heading": "Tees", "limit": 3, "columns": 3 }
     },
-    "about": {
+    "details": {
       "type": "image-with-text",
       "settings": {
-        "eyebrow": "About",
-        "heading": "What is WDH?",
-        "text": "<p>WDH is short for What'd Heck. Tell your story here: why you started it and what it's about.</p>"
+        "eyebrow": "The details",
+        "heading": "Embroidered. Not printed.",
+        "text": "<p>The 001 hoodie's logo is a stitched patch, not a print. 15oz heavyweight cotton with a washed gray finish.</p>"
       }
     },
     "signup": {
@@ -35,5 +44,5 @@
       }
     }
   },
-  "order": ["hero", "marquee", "featured", "about", "signup"]
+  "order": ["hero", "marquee", "spotlight", "tees", "details", "signup"]
 }

@@ -109,9 +109,11 @@
             : '';
         priceEl.innerHTML = `<span class="price"><span class="price__current">${money(variant.price)}</span>${compare}</span>`;
       }
-      const url = new URL(window.location.href);
-      url.searchParams.set('variant', variant.id);
-      window.history.replaceState({}, '', url);
+      if (section.hasAttribute('data-update-url')) {
+        const url = new URL(window.location.href);
+        url.searchParams.set('variant', variant.id);
+        window.history.replaceState({}, '', url);
+      }
     };
 
     form.querySelectorAll('[data-option]').forEach((input) => input.addEventListener('change', onChange));

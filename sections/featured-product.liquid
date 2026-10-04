@@ -1,0 +1,56 @@
+{%- assign product = section.settings.product -%}
+<section class="spotlight section page-width"{% if product != blank %} data-product-section{% endif %}>
+  <div class="spotlight__media">
+    {%- if product != blank and product.media.size > 0 -%}
+      {%- for media in product.media limit: 4 -%}
+        {%- if media.media_type == 'image' -%}
+          <div class="spotlight__img">
+            {{ media | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '400, 700, 1000, 1200', sizes: '(min-width: 990px) 27vw, 85vw', alt: media.alt }}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- else -%}
+      <div class="spotlight__img"><img src="{{ 'wdh-hoodie-front.jpg' | asset_url }}" alt="WDH hoodie, front" width="572" height="788" loading="lazy"></div>
+      <div class="spotlight__img"><img src="{{ 'wdh-hoodie-back.jpg' | asset_url }}" alt="WDH hoodie, back" width="571" height="788" loading="lazy"></div>
+    {%- endif -%}
+  </div>
+
+  <div class="spotlight__info">
+    <p class="spotlight__number">{{ section.settings.number | escape }}</p>
+    <h2 class="spotlight__title">
+      {%- if product != blank -%}{{ product.title }}{%- else -%}{{ section.settings.fallback_title | escape }}{%- endif -%}
+    </h2>
+    {%- if product != blank -%}
+      {%- assign current_variant = product.selected_or_first_available_variant -%}
+      <div class="product__price" data-price>{% render 'price', product: product, variant: current_variant %}</div>
+    {%- endif -%}
+    {%- if section.settings.details != blank -%}
+      <div class="spotlight__details rte">{{ section.settings.details }}</div>
+    {%- endif -%}
+    {%- if product != blank -%}
+      {% render 'product-form', product: product, current_variant: current_variant, section: section, show_dynamic_checkout: false %}
+      <a class="link-arrow" href="{{ product.url }}">Full details</a>
+    {%- else -%}
+      <button class="btn btn--accent btn--full btn--lg" type="button" disabled>Coming soon</button>
+      <p class="muted small">Pick your hoodie product in this section's settings to turn on the buy button.</p>
+    {%- endif -%}
+  </div>
+  {%- if product != blank -%}
+    <script type="application/json" data-product-json>
+      {{ product | json }}
+    </script>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Featured product (001)",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product" },
+    { "type": "text", "id": "number", "label": "Big number", "default": "001" },
+    { "type": "text", "id": "fallback_title", "label": "Title before a product is picked", "default": "Heavy Hoodie" },
+    { "type": "richtext", "id": "details", "label": "Details", "default": "<ul><li>15oz heavyweight cotton</li><li>Washed \"Ultimate Gray\"</li><li>Embroidered WDH drip patch, 4.75\" x 2.75\"</li></ul>" }
+  ],
+  "presets": [{ "name": "Featured product (001)" }]
+}
+{% endschema %}
