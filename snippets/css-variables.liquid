@@ -1,0 +1,13 @@
+{%- style -%}
+  :root {
+    --color-bg: {{ settings.color_background }};
+    --color-surface: {{ settings.color_surface }};
+    --color-text: {{ settings.color_text }};
+    --color-muted: {{ settings.color_muted }};
+    --color-accent: {{ settings.color_accent }};
+    --color-accent-text: {{ settings.color_accent_text }};
+    --color-border: {{ settings.color_text | color_modify: 'alpha', 0.14 }};
+    --radius: {{ settings.button_radius }}px;
+    --page-width: {{ settings.page_width }}px;
+  }
+{%- endstyle -%}

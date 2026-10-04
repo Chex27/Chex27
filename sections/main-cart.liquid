@@ -1,0 +1,49 @@
+<section class="section page-width cart">
+  <h1 class="page-title">Your cart</h1>
+  {%- if cart.item_count > 0 -%}
+    <form action="{{ routes.cart_url }}" method="post" novalidate>
+      <ul class="cart__items">
+        {%- for item in cart.items -%}
+          <li class="cart__item">
+            <a href="{{ item.url }}" class="cart__thumb">
+              {%- if item.image -%}
+                {{ item.image | image_url: width: 240 | image_tag: loading: 'lazy', alt: item.title }}
+              {%- endif -%}
+            </a>
+            <div class="cart__details">
+              <a href="{{ item.url }}" class="cart__title">{{ item.product.title }}</a>
+              {%- unless item.product.has_only_default_variant -%}
+                <p class="muted">{{ item.variant.title }}</p>
+              {%- endunless -%}
+              <p class="muted">{{ item.final_price | money }}</p>
+              <a href="{{ item.url_to_remove }}" class="cart__remove">Remove</a>
+            </div>
+            <div class="cart__qty">
+              <label class="visually-hidden" for="qty-{{ forloop.index }}">Quantity</label>
+              <input id="qty-{{ forloop.index }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0">
+            </div>
+            <div class="cart__line-price">{{ item.final_line_price | money }}</div>
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      <div class="cart__footer">
+        <label for="cart-note" class="muted">Order note</label>
+        <textarea id="cart-note" name="note" rows="2">{{ cart.note }}</textarea>
+        <p class="cart__subtotal">Subtotal <strong>{{ cart.total_price | money_with_currency }}</strong></p>
+        <p class="muted">Shipping and taxes calculated at checkout.</p>
+        <div class="cart__buttons">
+          <button type="submit" name="update" class="btn btn--outline">Update cart</button>
+          <button type="submit" name="checkout" class="btn btn--accent btn--lg">Checkout</button>
+        </div>
+      </div>
+    </form>
+  {%- else -%}
+    <p class="muted">Your cart is empty.</p>
+    <a class="btn btn--accent" href="{{ routes.all_products_collection_url }}">Shop now</a>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{ "name": "Cart" }
+{% endschema %}

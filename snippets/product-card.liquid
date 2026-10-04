@@ -1,0 +1,52 @@
+{%- comment -%}
+  Product card. Pass `product`. When `product` is blank, renders a placeholder card.
+{%- endcomment -%}
+{%- if product != blank -%}
+  <a class="card" href="{{ product.url }}">
+    <div class="card__media">
+      {%- if product.featured_media -%}
+        {{
+          product.featured_media
+          | image_url: width: 900
+          | image_tag:
+            loading: 'lazy',
+            widths: '300, 450, 600, 900',
+            sizes: '(min-width: 990px) 25vw, 50vw',
+            class: 'card__img',
+            alt: product.featured_media.alt
+        }}
+        {%- if product.media[1] and product.media[1].media_type == 'image' -%}
+          {{
+            product.media[1]
+            | image_url: width: 900
+            | image_tag:
+              loading: 'lazy',
+              widths: '300, 450, 600, 900',
+              sizes: '(min-width: 990px) 25vw, 50vw',
+              class: 'card__img card__img--hover',
+              alt: product.media[1].alt
+          }}
+        {%- endif -%}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
+      {%- endif -%}
+      {%- if product.available == false -%}
+        <span class="badge">Sold out</span>
+      {%- elsif product.compare_at_price > product.price -%}
+        <span class="badge badge--accent">Sale</span>
+      {%- endif -%}
+    </div>
+    <div class="card__info">
+      <h3 class="card__title">{{ product.title }}</h3>
+      {% render 'price', product: product %}
+    </div>
+  </a>
+{%- else -%}
+  <div class="card card--placeholder">
+    <div class="card__media">{{ 'product-1' | placeholder_svg_tag: 'placeholder' }}</div>
+    <div class="card__info">
+      <h3 class="card__title">Product name</h3>
+      <span class="price">$00.00</span>
+    </div>
+  </div>
+{%- endif -%}

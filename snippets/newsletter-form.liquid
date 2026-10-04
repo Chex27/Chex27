@@ -1,0 +1,15 @@
+{%- form 'customer', id: form_id, class: 'newsletter' -%}
+  <input type="hidden" name="contact[tags]" value="newsletter">
+  {%- if form.posted_successfully? -%}
+    <p class="form-message form-message--success" role="status">You're on the list. We'll email you when it drops.</p>
+  {%- else -%}
+    <div class="newsletter__row">
+      <label class="visually-hidden" for="email-{{ form_id }}">Email</label>
+      <input id="email-{{ form_id }}" type="email" name="contact[email]" placeholder="Your email" autocomplete="email" required>
+      <button type="submit" class="btn btn--accent">Notify me</button>
+    </div>
+    {%- if form.errors -%}
+      <p class="form-message form-message--error" role="alert">{{ form.errors | default_errors }}</p>
+    {%- endif -%}
+  {%- endif -%}
+{%- endform -%}

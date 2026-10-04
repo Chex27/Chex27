@@ -1,0 +1,21 @@
+{%- comment -%}
+  Renders a price. Pass `product`, and optionally `variant` to show that variant's price.
+{%- endcomment -%}
+{%- liquid
+  if variant
+    assign price = variant.price
+    assign compare_at = variant.compare_at_price
+    assign varies = false
+  else
+    assign price = product.price
+    assign compare_at = product.compare_at_price
+    assign varies = product.price_varies
+  endif
+-%}
+<span class="price">
+  {%- if varies %}From {% endif -%}
+  <span class="price__current">{{ price | money }}</span>
+  {%- if compare_at > price %}
+    <s class="price__compare">{{ compare_at | money }}</s>
+  {%- endif -%}
+</span>

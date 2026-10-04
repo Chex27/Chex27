@@ -1,0 +1,21 @@
+<section class="section page-width signup">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="section__title">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+  {%- if section.settings.text != blank -%}
+    <div class="muted">{{ section.settings.text }}</div>
+  {%- endif -%}
+  {% render 'newsletter-form', form_id: section.id %}
+</section>
+
+{% schema %}
+{
+  "name": "Email signup",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Don't miss the drop" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Get an email the second it goes live.</p>" },
+    { "type": "paragraph", "content": "Signups show up in Shopify under Customers, marked as subscribed to email marketing." }
+  ],
+  "presets": [{ "name": "Email signup" }]
+}
+{% endschema %}

@@ -1,0 +1,26 @@
+<section class="section page-width account">
+  <p><a href="{{ routes.account_url }}">&larr; Back to account</a></p>
+  <h1 class="page-title">Order {{ order.name }}</h1>
+  <p class="muted">Placed {{ order.created_at | date: '%B %d, %Y' }}</p>
+  <table class="table">
+    <thead><tr><th>Product</th><th>Price</th><th>Qty</th><th>Total</th></tr></thead>
+    <tbody>
+      {%- for line_item in order.line_items -%}
+        <tr>
+          <td>{{ line_item.title | link_to: line_item.product.url }}</td>
+          <td>{{ line_item.final_price | money }}</td>
+          <td>{{ line_item.quantity }}</td>
+          <td>{{ line_item.final_line_price | money }}</td>
+        </tr>
+      {%- endfor -%}
+    </tbody>
+  </table>
+  <p>Subtotal: {{ order.line_items_subtotal_price | money }}</p>
+  {%- for shipping_method in order.shipping_methods -%}
+    <p>Shipping ({{ shipping_method.title }}): {{ shipping_method.price | money }}</p>
+  {%- endfor -%}
+  <p>Tax: {{ order.tax_price | money }}</p>
+  <p><strong>Total: {{ order.total_price | money_with_currency }}</strong></p>
+  <h2 class="section__title">Shipping address</h2>
+  {{ order.shipping_address | format_address }}
+</section>

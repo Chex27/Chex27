@@ -1,0 +1,45 @@
+<footer class="footer">
+  <div class="footer__inner page-width">
+    <div class="footer__brand">
+      <span class="wordmark wordmark--lg">{{ section.settings.wordmark | default: shop.name }}</span>
+      {%- if section.settings.tagline != blank -%}
+        <p class="muted">{{ section.settings.tagline | escape }}</p>
+      {%- endif -%}
+      {% render 'social-icons' %}
+    </div>
+
+    {%- if section.settings.menu.links.size > 0 -%}
+      <nav class="footer__nav" aria-label="Footer">
+        <ul>
+          {%- for link in section.settings.menu.links -%}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    {%- endif -%}
+  </div>
+  <div class="footer__bottom page-width">
+    <small>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</small>
+    {%- if shop.enabled_payment_types.size > 0 -%}
+      <ul class="payment-icons">
+        {%- for type in shop.enabled_payment_types -%}
+          <li>{{ type | payment_type_svg_tag: class: 'payment-icon' }}</li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "class": "section-footer",
+  "enabled_on": { "groups": ["footer"] },
+  "settings": [
+    { "type": "text", "id": "wordmark", "label": "Brand name", "default": "WDH" },
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "What'd Heck." },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" },
+    { "type": "paragraph", "content": "Social links are set in Theme settings > Social media." }
+  ]
+}
+{% endschema %}

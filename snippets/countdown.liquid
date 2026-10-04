@@ -1,0 +1,12 @@
+{%- comment -%}
+  Drop countdown. Pass `date` (e.g. 2026-10-17T18:00:00-05:00) and optional `done_text`.
+  Hidden automatically when the date is blank, invalid or already passed.
+{%- endcomment -%}
+{%- if date != blank -%}
+  <div class="countdown" data-countdown="{{ date | escape }}" data-done-text="{{ done_text | escape }}" hidden>
+    <div class="countdown__unit"><span data-days>00</span><small>Days</small></div>
+    <div class="countdown__unit"><span data-hours>00</span><small>Hrs</small></div>
+    <div class="countdown__unit"><span data-minutes>00</span><small>Min</small></div>
+    <div class="countdown__unit"><span data-seconds>00</span><small>Sec</small></div>
+  </div>
+{%- endif -%}

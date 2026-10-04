@@ -1,0 +1,11 @@
+<section class="section page-width narrow account">
+  <h1 class="page-title">Activate account</h1>
+  {%- form 'activate_customer_password' -%}
+    {{ form.errors | default_errors }}
+    <label for="act-password">Password</label>
+    <input id="act-password" type="password" name="customer[password]" autocomplete="new-password" required>
+    <label for="act-confirm">Confirm password</label>
+    <input id="act-confirm" type="password" name="customer[password_confirmation]" autocomplete="new-password" required>
+    <button class="btn btn--accent btn--full" type="submit">Activate account</button>
+  {%- endform -%}
+</section>

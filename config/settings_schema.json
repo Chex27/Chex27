@@ -1,0 +1,43 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "WDH",
+    "theme_version": "1.0.0",
+    "theme_author": "WDH",
+    "theme_documentation_url": "https://github.com/Chex27/Chex27",
+    "theme_support_url": "https://github.com/Chex27/Chex27"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      { "type": "color", "id": "color_background", "label": "Background", "default": "#0b0b0b" },
+      { "type": "color", "id": "color_surface", "label": "Cards and panels", "default": "#161616" },
+      { "type": "color", "id": "color_text", "label": "Text", "default": "#f4f1ea" },
+      { "type": "color", "id": "color_muted", "label": "Secondary text", "default": "#9b978e" },
+      { "type": "color", "id": "color_accent", "label": "Accent (buttons, highlights)", "default": "#d7ff3a" },
+      { "type": "color", "id": "color_accent_text", "label": "Text on accent", "default": "#0b0b0b" }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      { "type": "range", "id": "page_width", "label": "Page width", "min": 1000, "max": 1600, "step": 50, "unit": "px", "default": 1400 },
+      { "type": "range", "id": "button_radius", "label": "Button corner radius", "min": 0, "max": 30, "step": 2, "unit": "px", "default": 0 }
+    ]
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      { "type": "image_picker", "id": "favicon", "label": "Favicon", "info": "Square image, at least 64 x 64px" }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      { "type": "text", "id": "social_tiktok", "label": "TikTok link", "info": "https://www.tiktok.com/@yourname" },
+      { "type": "text", "id": "social_instagram", "label": "Instagram link" },
+      { "type": "text", "id": "social_youtube", "label": "YouTube link" },
+      { "type": "text", "id": "social_facebook", "label": "Facebook link" }
+    ]
+  }
+]

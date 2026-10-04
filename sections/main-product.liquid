@@ -1,0 +1,111 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+<section class="product page-width" data-product-section>
+  <div class="product__media">
+    {%- for media in product.media -%}
+      <div class="product__media-item">
+        {%- if media.media_type == 'image' -%}
+          {%- liquid
+            if forloop.first
+              assign loading = 'eager'
+            else
+              assign loading = 'lazy'
+            endif
+          -%}
+          {{
+            media
+            | image_url: width: 1600
+            | image_tag:
+              widths: '550, 800, 1100, 1600',
+              sizes: '(min-width: 990px) 55vw, 100vw',
+              loading: loading,
+              alt: media.alt
+          }}
+        {%- else -%}
+          {{ media | media_tag }}
+        {%- endif -%}
+      </div>
+    {%- else -%}
+      <div class="product__media-item">{{ 'product-1' | placeholder_svg_tag: 'placeholder' }}</div>
+    {%- endfor -%}
+  </div>
+
+  <div class="product__info">
+    <div class="product__sticky">
+      {%- if section.settings.show_vendor and product.vendor != blank -%}
+        <p class="eyebrow">{{ product.vendor | escape }}</p>
+      {%- endif -%}
+      <h1 class="product__title">{{ product.title }}</h1>
+      <div class="product__price" data-price>
+        {% render 'price', product: product, variant: current_variant %}
+      </div>
+
+      {%- form 'product', product, id: 'product-form', class: 'product-form', data-product-form: '' -%}
+        <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id>
+
+        {%- unless product.has_only_default_variant -%}
+          {%- for option in product.options_with_values -%}
+            {%- assign option_index = forloop.index -%}
+            <fieldset class="option">
+              <legend>{{ option.name }}: <span data-option-label="{{ option.position }}">{{ option.selected_value }}</span></legend>
+              <div class="option__values">
+                {%- for value in option.values -%}
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    id="option-{{ option_index }}-{{ forloop.index }}"
+                    name="option{{ option.position }}"
+                    value="{{ value | escape }}"
+                    data-option="{{ option.position }}"
+                    {% if option.selected_value == value %}
+                      checked
+                    {% endif %}
+                  >
+                  <label class="pill" for="option-{{ option_index }}-{{ forloop.index }}">{{ value }}</label>
+                {%- endfor -%}
+              </div>
+            </fieldset>
+          {%- endfor -%}
+        {%- endunless -%}
+
+        <div class="product-form__qty">
+          <label for="quantity">Quantity</label>
+          <input id="quantity" type="number" name="quantity" value="1" min="1">
+        </div>
+
+        <button
+          type="submit"
+          name="add"
+          class="btn btn--accent btn--full btn--lg"
+          data-add-button
+          {% unless current_variant.available %}
+            disabled
+          {% endunless %}
+        >
+          {%- if current_variant.available -%}Add to cart{%- else -%}Sold out{%- endif -%}
+        </button>
+        {%- if section.settings.show_dynamic_checkout -%}
+          {{ form | payment_button }}
+        {%- endif -%}
+        <p class="form-message" data-form-message role="status" hidden></p>
+      {%- endform -%}
+
+      {%- if product.description != blank -%}
+        <div class="product__description rte">{{ product.description }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <script type="application/json" data-product-json>
+    {{ product | json }}
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Product page",
+  "settings": [
+    { "type": "checkbox", "id": "show_vendor", "label": "Show vendor", "default": false },
+    { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Show Buy it now / Shop Pay button", "default": true }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,33 @@
+<section class="section page-width narrow account">
+  <p><a href="{{ routes.account_url }}">&larr; Back to account</a></p>
+  <h1 class="page-title">Addresses</h1>
+  {%- paginate customer.addresses by 10 -%}
+    {%- for address in customer.addresses -%}
+      <div class="account__address">
+        {%- if address == customer.default_address -%}<p class="eyebrow">Default</p>{%- endif -%}
+        {{ address | format_address }}
+        {%- form 'customer_address', address -%}
+          <input type="hidden" name="_method" value="delete">
+          <button type="submit" class="btn btn--outline">Delete</button>
+        {%- endform -%}
+      </div>
+    {%- endfor -%}
+  {%- endpaginate -%}
+
+  <h2 class="section__title">Add a new address</h2>
+  {%- form 'customer_address', customer.new_address -%}
+    {{ form.errors | default_errors }}
+    <label for="addr-first">First name</label><input id="addr-first" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name">
+    <label for="addr-last">Last name</label><input id="addr-last" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name">
+    <label for="addr-1">Address</label><input id="addr-1" name="address[address1]" value="{{ form.address1 }}" autocomplete="address-line1">
+    <label for="addr-2">Apartment, suite, etc.</label><input id="addr-2" name="address[address2]" value="{{ form.address2 }}" autocomplete="address-line2">
+    <label for="addr-city">City</label><input id="addr-city" name="address[city]" value="{{ form.city }}" autocomplete="address-level2">
+    <label for="addr-country">Country</label>
+    <select id="addr-country" name="address[country]" data-default="{{ form.country }}">{{ all_country_option_tags }}</select>
+    <label for="addr-province">State / province</label><input id="addr-province" name="address[province]" value="{{ form.province }}" autocomplete="address-level1">
+    <label for="addr-zip">ZIP / postal code</label><input id="addr-zip" name="address[zip]" value="{{ form.zip }}" autocomplete="postal-code">
+    <label for="addr-phone">Phone</label><input id="addr-phone" type="tel" name="address[phone]" value="{{ form.phone }}" autocomplete="tel">
+    <label class="checkbox">{{ form.set_as_default_checkbox }} Set as default address</label>
+    <button type="submit" class="btn btn--accent btn--full">Add address</button>
+  {%- endform -%}
+</section>
