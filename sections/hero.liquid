@@ -14,7 +14,7 @@
       {%- endif -%}
       {% render 'countdown', date: section.settings.drop_date, done_text: section.settings.drop_live_text %}
       {%- if section.settings.button_label != blank -%}
-        <a class="btn btn--accent btn--lg" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label | escape }}</a>
+        <a class="btn btn--accent btn--lg" href="{{ section.settings.button_link | default: '#drop' }}">{{ section.settings.button_label | escape }}</a>
       {%- endif -%}
     </div>
     <div class="hero__media">
@@ -41,13 +41,13 @@
     { "type": "text", "id": "eyebrow", "label": "Small text above logo", "default": "Drop 001" },
     { "type": "checkbox", "id": "show_logo", "label": "Show logo as heading", "default": true },
     { "type": "text", "id": "heading", "label": "Text heading (when logo is off)", "default": "WDH" },
-    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>The first WDH drop. One heavy hoodie, a few tees.</p>" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>One hoodie. That's the whole drop.</p>" },
     { "type": "header", "content": "Drop countdown" },
     { "type": "text", "id": "drop_date", "label": "Drop date and time", "info": "Format: 2026-10-17T18:00:00-05:00 (the -05:00 is your time zone; -05:00 = US Central daylight time). Leave blank to hide the countdown." },
     { "type": "text", "id": "drop_live_text", "label": "Text when the countdown ends", "default": "DROP 001 IS LIVE" },
     { "type": "header", "content": "Button" },
-    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop the drop" },
-    { "type": "url", "id": "button_link", "label": "Button link" }
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Get the hoodie" },
+    { "type": "url", "id": "button_link", "label": "Button link", "info": "Leave empty to scroll down to the hoodie." }
   ],
   "presets": [{ "name": "Hero / drop banner" }]
 }

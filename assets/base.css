@@ -370,3 +370,6 @@ input[type=text], input[type=email], input[type=password], input[type=number], i
 .password__heading { color: var(--color-accent); }
 html, body { overflow-x: clip; }
 @media (max-width: 749px) { .hero__sticker { right: 8px; top: -14px; width: 76px; height: 76px; font-size: 1.5rem; } }
+html { scroll-behavior: smooth; }
+#drop { scroll-margin-top: 90px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

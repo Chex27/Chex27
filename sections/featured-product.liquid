@@ -1,5 +1,5 @@
 {%- assign product = section.settings.product -%}
-<section class="spotlight section page-width"{% if product != blank %} data-product-section{% endif %}>
+<section id="drop" class="spotlight section page-width"{% if product != blank %} data-product-section{% endif %}>
   <div class="spotlight__media">
     {%- if product != blank and product.media.size > 0 -%}
       {%- for media in product.media limit: 4 -%}
