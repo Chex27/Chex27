@@ -3,6 +3,12 @@
   `section` and `show_dynamic_checkout`. Needs a parent with [data-product-section].
 {%- endcomment -%}
 {%- assign form_id = 'product-form-' | append: section.id -%}
+{%- liquid
+  assign add_label = 'Add to cart'
+  if settings.preorder_enabled
+    assign add_label = settings.preorder_button_label | default: 'Pre-order'
+  endif
+-%}
 {%- form 'product', product, id: form_id, class: 'product-form', data-product-form: '' -%}
   <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id>
 
@@ -41,12 +47,17 @@
     name="add"
     class="btn btn--accent btn--full btn--lg"
     data-add-button
+    data-add-label="{{ add_label | escape }}"
     {% unless current_variant.available %}
       disabled
     {% endunless %}
   >
-    {%- if current_variant.available -%}Add to cart{%- else -%}Sold out{%- endif -%}
+    {%- if current_variant.available -%}{{ add_label }}{%- else -%}Sold out{%- endif -%}
   </button>
+  {%- if settings.preorder_enabled and settings.preorder_note != blank -%}
+    <input type="hidden" name="properties[Pre-order]" value="{{ settings.preorder_note | escape }}">
+    <p class="preorder-note">{{ settings.preorder_note | escape }}</p>
+  {%- endif -%}
   {%- if show_dynamic_checkout -%}
     {{ form | payment_button }}
   {%- endif -%}

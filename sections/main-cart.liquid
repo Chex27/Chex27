@@ -15,6 +15,11 @@
               {%- unless item.product.has_only_default_variant -%}
                 <p class="muted">{{ item.variant.title }}</p>
               {%- endunless -%}
+              {%- for property in item.properties -%}
+                {%- unless property.last == blank or property.first contains '_' -%}
+                  <p class="muted small">{{ property.first }}: {{ property.last }}</p>
+                {%- endunless -%}
+              {%- endfor -%}
               <p class="muted">{{ item.final_price | money }}</p>
               <a href="{{ item.url_to_remove }}" class="cart__remove">Remove</a>
             </div>

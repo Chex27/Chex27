@@ -373,3 +373,4 @@ html, body { overflow-x: clip; }
 html { scroll-behavior: smooth; }
 #drop { scroll-margin-top: 90px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.preorder-note { margin: 12px 0 0; padding: 10px 14px; border-radius: 14px; background: var(--color-surface); color: var(--color-accent); font-weight: 700; font-size: .9rem; text-align: center; }

@@ -101,7 +101,7 @@
       }
       idInput.value = variant.id;
       button.disabled = !variant.available;
-      button.textContent = variant.available ? 'Add to cart' : 'Sold out';
+      button.textContent = variant.available ? button.dataset.addLabel || 'Add to cart' : 'Sold out';
       if (priceEl) {
         const compare =
           variant.compare_at_price > variant.price

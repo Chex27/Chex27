@@ -10,40 +10,163 @@
   {
     "name": "Colors",
     "settings": [
-      { "type": "color", "id": "color_background", "label": "Background", "default": "#3d3d3d" },
-      { "type": "color", "id": "color_surface", "label": "Cards and panels", "default": "#4a4a4a" },
-      { "type": "color", "id": "color_text", "label": "Text", "default": "#f6f3ec" },
-      { "type": "color", "id": "color_muted", "label": "Secondary text", "default": "#c2beb5" },
-      { "type": "color", "id": "color_accent", "label": "Accent (buttons, drips)", "default": "#f3ce10" },
-      { "type": "color", "id": "color_accent_text", "label": "Text on accent", "default": "#1c1c1c" }
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background",
+        "default": "#3d3d3d"
+      },
+      {
+        "type": "color",
+        "id": "color_surface",
+        "label": "Cards and panels",
+        "default": "#4a4a4a"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#f6f3ec"
+      },
+      {
+        "type": "color",
+        "id": "color_muted",
+        "label": "Secondary text",
+        "default": "#c2beb5"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent (buttons, drips)",
+        "default": "#f3ce10"
+      },
+      {
+        "type": "color",
+        "id": "color_accent_text",
+        "label": "Text on accent",
+        "default": "#1c1c1c"
+      }
     ]
   },
   {
     "name": "Brand",
     "settings": [
-      { "type": "image_picker", "id": "logo", "label": "Logo image (optional)", "info": "Leave empty to use the built-in WDH drip logo. Upload a transparent PNG to use your exact artwork everywhere instead." },
-      { "type": "header", "content": "Built-in logo colors" },
-      { "type": "color", "id": "color_logo_bg", "label": "Drip background", "default": "#f3ce10" },
-      { "type": "color", "id": "color_logo_1", "label": "W", "default": "#14a03a" },
-      { "type": "color", "id": "color_logo_2", "label": "D", "default": "#1a9be0" },
-      { "type": "color", "id": "color_logo_3", "label": "H", "default": "#ec1f84" },
-      { "type": "image_picker", "id": "favicon", "label": "Favicon", "info": "Square image, at least 64 x 64px" }
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image (optional)",
+        "info": "Leave empty to use the built-in WDH drip logo. Upload a transparent PNG to use your exact artwork everywhere instead."
+      },
+      {
+        "type": "header",
+        "content": "Built-in logo colors"
+      },
+      {
+        "type": "color",
+        "id": "color_logo_bg",
+        "label": "Drip background",
+        "default": "#f3ce10"
+      },
+      {
+        "type": "color",
+        "id": "color_logo_1",
+        "label": "W",
+        "default": "#14a03a"
+      },
+      {
+        "type": "color",
+        "id": "color_logo_2",
+        "label": "D",
+        "default": "#1a9be0"
+      },
+      {
+        "type": "color",
+        "id": "color_logo_3",
+        "label": "H",
+        "default": "#ec1f84"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "Square image, at least 64 x 64px"
+      }
     ]
   },
   {
     "name": "Layout",
     "settings": [
-      { "type": "range", "id": "page_width", "label": "Page width", "min": 1000, "max": 1600, "step": 50, "unit": "px", "default": 1300 },
-      { "type": "range", "id": "button_radius", "label": "Button corner radius", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 40 }
+      {
+        "type": "range",
+        "id": "page_width",
+        "label": "Page width",
+        "min": 1000,
+        "max": 1600,
+        "step": 50,
+        "unit": "px",
+        "default": 1300
+      },
+      {
+        "type": "range",
+        "id": "button_radius",
+        "label": "Button corner radius",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px",
+        "default": 40
+      }
+    ]
+  },
+  {
+    "name": "Pre-order",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "preorder_enabled",
+        "label": "Pre-order mode",
+        "default": true,
+        "info": "Turns the buy button into a pre-order button and shows the ship-date note. In Shopify, also set each size's quantity to 0 and turn on 'Sell when out of stock'."
+      },
+      {
+        "type": "text",
+        "id": "preorder_button_label",
+        "label": "Button text",
+        "default": "Pre-order"
+      },
+      {
+        "type": "text",
+        "id": "preorder_note",
+        "label": "Ship-date note",
+        "default": "Pre-order: ships in about 4 weeks.",
+        "info": "Shown under the button and saved on every order. Keep it accurate."
+      }
     ]
   },
   {
     "name": "Social media",
     "settings": [
-      { "type": "text", "id": "social_tiktok", "label": "TikTok link", "info": "https://www.tiktok.com/@yourname" },
-      { "type": "text", "id": "social_instagram", "label": "Instagram link" },
-      { "type": "text", "id": "social_youtube", "label": "YouTube link" },
-      { "type": "text", "id": "social_facebook", "label": "Facebook link" }
+      {
+        "type": "text",
+        "id": "social_tiktok",
+        "label": "TikTok link",
+        "info": "https://www.tiktok.com/@yourname"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram link"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube",
+        "label": "YouTube link"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook",
+        "label": "Facebook link"
+      }
     ]
   }
 ]
