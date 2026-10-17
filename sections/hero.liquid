@@ -26,7 +26,7 @@
           | image_tag: widths: '500, 800, 1100, 1400', sizes: '(min-width: 990px) 45vw, 100vw', fetchpriority: 'high', alt: section.settings.image.alt
         }}
       {%- else -%}
-        <img src="{{ 'wdh-hoodie-front.jpg' | asset_url }}" alt="WDH heavy hoodie, washed gray, with embroidered drip logo" width="572" height="788" fetchpriority="high">
+        <img src="{{ 'wdh-worn.jpg' | asset_url }}" alt="Wearing the WDH 001 hoodie, washed gray with the embroidered drip logo" width="900" height="1125" fetchpriority="high">
       {%- endif -%}
     </div>
   </div>
@@ -36,7 +36,7 @@
 {
   "name": "Hero / drop banner",
   "settings": [
-    { "type": "image_picker", "id": "image", "label": "Image", "info": "Leave empty to use the hoodie photo." },
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Leave empty to use the 001 hoodie photo." },
     { "type": "text", "id": "sticker", "label": "Sticker on image", "default": "001" },
     { "type": "text", "id": "eyebrow", "label": "Small text above logo", "default": "Drop 001" },
     { "type": "checkbox", "id": "show_logo", "label": "Show logo as heading", "default": true },

@@ -349,7 +349,7 @@ input:focus-visible + .pill { outline: 2px solid var(--color-accent); outline-of
 .badge { border-radius: 999px; background: var(--color-logo-3); color: #fff; }
 
 /* Image with text */
-.split__media { aspect-ratio: 16 / 10; border-radius: 26px; }
+.split__media { aspect-ratio: 1; border-radius: 26px; }
 .split__media img { object-position: center; }
 
 /* Pills, product page */
